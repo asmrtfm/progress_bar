@@ -109,7 +109,9 @@ class ProgressBar
 
     progress_width = (ratio * (bar_width - 2)).floor
     remainder_width = bar_width - 2 - progress_width
-    "[#{'#' * progress_width}#{' ' * remainder_width}]"
+    # color = (ratio < 0.3) ? "\e[1;35m"
+    color = "\e[1;3#{rand(1..6)}m"
+    "[#{color}#{'#' * progress_width}\e[0m#{' ' * remainder_width}]"
   end
 
   def render_counter
